@@ -1,5 +1,6 @@
 from random import choice
 from numpy import array, dot, random
+from matplotlib import pylab
 
 unit_step = lambda x: 0 if x < 0 else 1
 
@@ -16,7 +17,7 @@ errors = []
 eta = 0.2
 n = 100
 
-for i in xrange(n):
+for i in range(n):
   x, expected = choice(training_data)
   result = dot(w, x)
   error = expected - unit_step(result)
@@ -32,6 +33,11 @@ for x, _ in training_data:
 # [1 0]: 0.345454042997 -> 1
 # [1 1]: 1.24665040799 -> 1
 
+import matplotlib.pyplot as plt
+plt.plot(errors)
+plt.show()
+
 from pylab import plot, ylim
 ylim([-1,1])
-plot(errors)
+p = plot(errors)
+
